@@ -2,6 +2,7 @@ package model.enemies;
 import java.util.*;
 
 import controller.globalGenerator.GlobalGenerator;
+import model.items.ItemGenerator;
 import model.player.Pair;
 import model.player.Player;
 
@@ -14,21 +15,23 @@ public class Enemy {
 	// Giving the Arena size to avoid misplacing during generation.
 	private final static int GRID_SIZEX = 10;
 	private final static int GRID_SIZEY = 12;
-	private  Player player;
 	private Pair<Integer,Integer> pos;
 	private GlobalGenerator gg = GlobalGenerator.getInstance();
+	private ItemGenerator itemGeneration = new ItemGenerator();
 	
 	private int ID;
-	
 	private int x;
 	private int y;
 	
-	private int HP ;
-	private int def;
-	private int atk;
-	private int exp;
-	private int HeroEXP = gg.player.getExperience().getExpPoints();
-	private int Gold;
+	protected int HP ;
+	protected int def;
+	protected int atk;
+	protected int exp;
+	protected int HeroEXP = gg.player.getExperience().getExpPoints();
+	protected int HeroATK = gg.playerAttack.getAttackPoints();
+	protected int Gold;
+	
+	protected boolean EnemyType;  // false = simple enemy  // true = stronger enemy
 	
 	Random rand = new Random();
 	
@@ -43,12 +46,14 @@ public class Enemy {
 		this.ID = id;
 		int value = rand.nextInt(5)+1; 
 		
-		HP =( 5+value + ( HeroEXP/(10*2) ));
-		def=( 1+value/2 + ( HeroEXP/(20*8) ));
-		atk=( 1+value/3 + ( HeroEXP/(10*10) ));
+		HP =( 5+value + ( HeroEXP/(10*2) ))*(1 + HeroATK/15);
+		def=( 1+value/2 + ( HeroEXP/(20*8) ) +( HeroATK/8) );
+		atk=( 1+value/3 + ( HeroEXP/(10*10) ) +( HeroATK/10));
 		exp=( 10+value - ( HeroEXP/(15*6) ));
 		
 		Gold=rand.nextInt(15)+10;
+		
+		EnemyType=false;
 		
 		generate_pos();
 	}
@@ -133,6 +138,7 @@ public class Enemy {
 			gg.skipenemy.add(this.ID);
 			gg.enemyposwithID.set(this.ID, new Pair<>(this.ID, new Pair<Integer, Integer> (99, 99)));
 		}
+		itemGeneration.spawn(this.EnemyType);
 	}
 
 	private void setGold(int i) {

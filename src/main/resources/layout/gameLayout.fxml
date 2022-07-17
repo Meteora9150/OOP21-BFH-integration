@@ -10,7 +10,7 @@
 <AnchorPane id="gameLayout" fx:id="gameLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameLayoutController">
    <children>
       <Pane id="mapHolder" fx:id="mapHolder" layoutX="159.0" layoutY="14.0" prefHeight="623.0" prefWidth="510.0" />
-      <TextArea id="combatHistory" fx:id="combatHistory" layoutX="680.0" layoutY="14.0" prefHeight="155.0" prefWidth="204.0" />
+      <TextArea id="combatHistory" fx:id="combatHistory" layoutX="680.0" layoutY="14.0" prefHeight="185.0" prefWidth="204.0" />
       <Pane id="charImage" fx:id="charImage" layoutX="14.0" layoutY="14.0" prefHeight="135.0" prefWidth="134.0">
          <children>
             <Label id="charImageHolder" fx:id="charImageHolder" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="107.0" prefWidth="106.0" />
@@ -22,8 +22,11 @@
                   <Tooltip id="skillATooltip" fx:id="skillATooltip" text="Heal yourself. Cost: 25g." />
                </tooltip></Label>
          </children></Pane>
-      <TextArea id="statsArea" fx:id="statsArea" editable="false" layoutX="14.0" layoutY="252.0" prefHeight="74.0" prefWidth="134.0" />
-      <Label id="moneyHolder" fx:id="moneyHolder" layoutX="14.0" layoutY="354.0" prefHeight="26.0" prefWidth="134.0" />
+      <TextArea id="statsArea" fx:id="statsArea" editable="false" layoutX="14.0" layoutY="252.0" prefHeight="145.0" prefWidth="134.0" />
+      <Label id="moneyHolder" fx:id="moneyHolder" layoutX="14.0" layoutY="410.0" prefHeight="26.0" prefWidth="134.0" />
+      
+      		<TextArea id="inventory" fx:id="inventory" editable="false" layoutX="14.0" layoutY="450.0" prefHeight="128.0" prefWidth="134.0" />
+      
       <Pane id="skillB" fx:id="skillB" layoutX="97.0" layoutY="171.0" prefHeight="50.0" prefWidth="50.0">
          <children>
             <Label id="skillBHolder" fx:id="skillBHolder" layoutX="5.0" layoutY="5.0" prefHeight="40.0" prefWidth="40.0">
@@ -31,7 +34,27 @@
                   <Tooltip id="skillBTooltip" fx:id="skillBTooltip" text="Double attack an enemy. Cost: 1 Action Point." />
                </tooltip></Label>
          </children></Pane>
-      <Pane id="btnHolder" fx:id="btnHolder" layoutX="680.0" layoutY="252.0" prefHeight="204.0" prefWidth="204.0">
+         
+         
+         <Pane id="enemyInfo" fx:id="enemyInfo" layoutX="680.0" layoutY="210.0" prefHeight="140.0" prefWidth="204.0">
+         	<children>
+         		<Pane id="enemyInfoArea" fx:id="enemyInfoArea" layoutX="0" layoutY="0" prefHeight="130.0" prefWidth="204.0">
+         			<children>
+            			<Label id="enemy0ImageHolder" fx:id="enemy0ImageHolder" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="30.0" />
+            			<TextArea id="enemy0Info" fx:id="enemy0Info" editable="false" layoutX="50.0" layoutY="7.0" prefHeight="40" prefWidth="150" />
+            			
+            			<Label id="enemy1ImageHolder" fx:id="enemy1ImageHolder" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="30.0" prefWidth="30.0" />
+            			<TextArea id="enemy1Info" fx:id="enemy1Info" editable="false" layoutX="50.0" layoutY="52.0" prefHeight="40" prefWidth="150" />
+            			
+            			<Label id="enemy2ImageHolder" fx:id="enemy2ImageHolder" alignment="CENTER" layoutX="10.0" layoutY="100.0" prefHeight="30.0" prefWidth="30.0" />
+            			<TextArea id="enemy2Info" fx:id="enemy2Info" editable="false" layoutX="50.0" layoutY="97.0" prefHeight="40" prefWidth="150" />
+            			
+         			</children></Pane>
+         	</children>
+         </Pane>
+         
+         
+      <Pane id="btnHolder" fx:id="btnHolder" layoutX="680.0" layoutY="362.0" prefHeight="204.0" prefWidth="204.0">
          <children>
             <Button id="up" fx:id="up" layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#moveUP" prefHeight="50.0" prefWidth="50.0" />
             <Button id="left" fx:id="left" layoutX="14.0" layoutY="77.0" mnemonicParsing="false" onAction="#moveLEFT" prefHeight="50.0" prefWidth="50.0" snapToPixel="false" />
@@ -40,7 +63,9 @@
             <Button id="stop" fx:id="stop" layoutX="77.0" layoutY="77.0" mnemonicParsing="false" onAction="#moveSTOP" prefHeight="50.0" prefWidth="50.0" />
          </children>
       </Pane>
-      <Button id="skillABtn" fx:id="skillABtn" layoutX="680.0" layoutY="478.0" mnemonicParsing="false" onAction="#skillA" prefHeight="50.0" prefWidth="50.0" />
-      <Button id="skillBBtn" fx:id="skillBBtn" layoutX="833.0" layoutY="478.0" mnemonicParsing="false" onAction="#skillB" prefHeight="50.0" prefWidth="50.0" />
+      <Button id="skillABtn" fx:id="skillABtn" layoutX="680.0" layoutY="578.0" mnemonicParsing="false" onAction="#skillA" prefHeight="50.0" prefWidth="50.0" />
+      <Button id="skillBBtn" fx:id="skillBBtn" layoutX="833.0" layoutY="578.0" mnemonicParsing="false" onAction="#skillB" prefHeight="50.0" prefWidth="50.0" />
    </children>
+   
+   
 </AnchorPane>

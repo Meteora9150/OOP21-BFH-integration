@@ -1,6 +1,7 @@
 package model.player;
 import controller.playerAttack.PlayerAttackImpl;
 import model.actions.Action;
+import model.inventory.Inventory;
 
 /**
  * Interface for the Player.
@@ -29,4 +30,6 @@ public interface Player {
 	public void recoverPlayer();
 	
 	PlayerAttackImpl getPlayerAtt();
+
+	public Inventory getInventory();
 }

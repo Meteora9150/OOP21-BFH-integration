@@ -31,4 +31,8 @@ public interface PlayerAttack {
 	 * add player attack points
 	 */
 	 void increaseAtt();
+
+
+
+	void SetTemporaryAttack(int i);
 }

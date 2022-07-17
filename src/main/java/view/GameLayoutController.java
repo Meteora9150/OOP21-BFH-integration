@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import controller.globalGenerator.GlobalGenerator;
+import controller.playerAttack.PlayerAttackImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -69,6 +70,10 @@ public class GameLayoutController extends SharedMethodsImpl{
 	  Button skillABtn, skillBBtn;
 	  @FXML
 	  DialogPane dialogPane;
+	  @FXML
+	  TextArea inventory;
+	  @FXML
+	  TextArea enemy0Info,enemy1Info,enemy2Info;
 		
 	  @FXML
 	  private void initialize() {
@@ -80,6 +85,8 @@ public class GameLayoutController extends SharedMethodsImpl{
 		  combatHistory.setFocusTraversable(false);
 		  statsArea.setMouseTransparent(true);
 		  statsArea.setFocusTraversable(false);
+		  inventory.setMouseTransparent(true);
+		  inventory.setFocusTraversable(false);
   		
 		   
 		  /**
@@ -219,12 +226,17 @@ public class GameLayoutController extends SharedMethodsImpl{
 		this.player = gg.player;
 		player.toString();	
 	    int HeroX = player.getPlayerPosition().getX();
-	    int HeroY = player.getPlayerPosition().getY();
-	    	
+	    int HeroY = player.getPlayerPosition().getY();	    
+	    
 	    statsArea.setText("Experience = " + gg.player.getExperience().getExpPoints()+ "\n"+
-	    				  "HP = " + gg.player.getLife().getLifePoints() +" / "+ player.getLife().getMaxLifePoints() + "\n" +
-	    				  " LV = " + gg.player.getExperience().getLevel() + "\n" +
-	    				  "Action = " + gg.player.getPlayer_action().getMaxActions());
+				  "Current HP = " + gg.player.getLife().getLifePoints() +" \n"+
+				  "Max HP = "+ gg.player.getLife().getMaxLifePoints() + "\n"+
+				  "Attack = "+gg.playerAttack.getAttackPoints()+" \n"+
+				  "LV = " + gg.player.getExperience().getLevel() + "\n" +
+				  "Items equipped = "+gg.player.getInventory().getOccupation()+"\n"+
+				  "Inventory size = "+gg.player.getInventory().getSize()+"\n"+
+				  "Action = " + gg.player.getPlayer_action().getMaxActions());
+	    
 	    moneyHolder.setText("Gold = " + gg.player.getGold().getGold_points());
 		  
 	    //The graphical part of the Arena is drawn here.
@@ -345,11 +357,24 @@ public class GameLayoutController extends SharedMethodsImpl{
 	 * Update the Stats fields in the View whenever they are changed.
 	 */
 	private void updateHeroStats() {
-
-	    	statsArea.setText("Experience = " + gg.player.getExperience().getExpPoints()+ "\n"+
-					"Life Points = " + gg.player.getLife().getLifePoints() +" / "+ gg.player.getLife().getMaxLifePoints() + "\n" +
-					"Level = " + gg.player.getExperience().getLevel() + "\n" +
-					"Action = " + gg.player.getPlayer_action().getAvailableActions());
+		
+		statsArea.setText("Experience = " + gg.player.getExperience().getExpPoints()+ "\n"+
+				  "Current HP = " + gg.player.getLife().getLifePoints() +" \n"+
+				  "Max HP = "+ gg.player.getLife().getMaxLifePoints() + "\n"+
+				  "Attack = "+gg.playerAttack.getAttackPoints()+" \n"+
+				  "LV = " + gg.player.getExperience().getLevel() + "\n" +
+				  "Items equipped = "+gg.player.getInventory().getOccupation()+"\n"+
+				  "Inventory size = "+gg.player.getInventory().getSize()+"\n"+
+				  "Action = " + gg.player.getPlayer_action().getAvailableActions());
+		
+		var enemy0=gg.enemies.get(0);
+		enemy0Info.setText(" HP: "+enemy0.GetHP()+" Atk: "+enemy0.GetATK()+" Def: "+enemy0.GetDEF());
+		var enemy1=gg.enemies.get(1);
+		enemy1Info.setText(" HP: "+enemy1.GetHP()+" Atk: "+enemy1.GetATK()+" Def: "+enemy1.GetDEF());
+		var enemy2=gg.enemies.get(2);
+		enemy2Info.setText(" HP: "+enemy2.GetHP()+" Atk: "+enemy2.GetATK()+" Def: "+enemy2.GetDEF());
+			
+		inventory.setText("-----[ Inventory ]-----"+gg.player.getInventory().getInventoryContents());
 	    	
 	    	moneyHolder.setText("Gold = " + gg.player.getGold().getGold_points());	    	
 	}

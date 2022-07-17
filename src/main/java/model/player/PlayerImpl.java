@@ -4,6 +4,8 @@ import controller.globalGenerator.GlobalGenerator;
 import controller.playerAttack.PlayerAttackImpl;
 import model.actions.Action;
 import model.actions.ActionImpl;
+import model.inventory.Inventory;
+import model.inventory.InventoryImpl;
 
 /**
  * The implementation of the {@link Player}.
@@ -21,6 +23,8 @@ public class PlayerImpl implements Player {
 	
 	GlobalGenerator gg = GlobalGenerator.getInstance();
 	
+	private Inventory inventory;
+	
 	/**
 	 * Constructor for the Player.
 	 * @param pair starting position.
@@ -32,6 +36,7 @@ public class PlayerImpl implements Player {
 		this.player_action=new ActionImpl();
 		this.gold=new Gold();
 		this.attack=new PlayerAttackImpl(gg.player);
+		this.inventory= new InventoryImpl();
 	}
 	
 	/**
@@ -73,5 +78,11 @@ public class PlayerImpl implements Player {
 
 	public Action getPlayer_action() {
 		return player_action;
+	}
+
+	@Override
+	public Inventory getInventory() {
+		return inventory;
+		
 	}
 }

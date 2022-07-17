@@ -15,6 +15,8 @@ public class PlayerAttackImpl implements PlayerAttack {
 	private int DEFAULT_ATTACK_POINTS = 5; 
 	private int attackPoints = DEFAULT_ATTACK_POINTS;
 
+	private int temporaryAttack = 0;
+	
 	private GlobalGenerator gg = GlobalGenerator.getInstance();
 	Player player;
 
@@ -29,17 +31,19 @@ public class PlayerAttackImpl implements PlayerAttack {
 		return attackPoints;
 	}
 	
-	private void resetAttackPoints() {
-		this.attackPoints = DEFAULT_ATTACK_POINTS;
-	}
-	
 	 /**
      * {@inheritDoc}
      */
 	public void attack(Enemy enemy) {
 		System.out.println("Hero is attacking!");
-		enemy.GetHit(getAttackPoints());
-		resetAttackPoints();	
+		
+		if(temporaryAttack != 0) {
+			enemy.GetHit(GetTemporaryAttack());
+			SetTemporaryAttack(0);
+		}else {
+			enemy.GetHit(getAttackPoints());
+		}
+		
 	}
 
 	 /**
@@ -63,4 +67,16 @@ public class PlayerAttackImpl implements PlayerAttack {
 	public void getHit(int enemyID, int enemyResponseHit) {
 		gg.player.getLife().setLifePoints(gg.player.getLife().getLifePoints() - enemyResponseHit);
 	}
+	
+	
+	
+	private int GetTemporaryAttack() {
+		return this.temporaryAttack;
+	}
+	
+	public void SetTemporaryAttack(int i) {
+		// TODO Auto-generated method stub
+		this.temporaryAttack=i;
+	}
+	
 }

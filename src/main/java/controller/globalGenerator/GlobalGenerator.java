@@ -11,6 +11,7 @@ import controller.playerMovements.PlayerMovementImpl;
 import model.player.*;
 import model.abilities.*;
 import model.enemies.Enemy;
+import model.enemies.StrongerEnemy;
 import model.obstacles.Obstacle;
 import view.GameLayoutController;
 
@@ -141,9 +142,21 @@ public class GlobalGenerator {
 
 
 	private void generate_enemies() {
-		for (int i = 0; i < NUM_ENEMIES; i++) {
-			Enemy e = new Enemy(i);
-			enemies.add(e);
+		Random r = new Random();
+		for (int i = 0; i < NUM_ENEMIES; i++) {		
+			int value = r.nextInt(4)+1;
+			switch(value) {
+				case 1:
+					System.out.println("A strong enemy has appeared !! ");
+					Enemy e = new StrongerEnemy(i);	
+					enemies.add(e);
+				break;
+				
+				default:
+					Enemy e1 = new Enemy(i);
+					enemies.add(e1);
+				break;
+			}	
 		}
 	}
 
@@ -158,7 +171,7 @@ public class GlobalGenerator {
 			if (player.getExperience().addLevel()) {
 				System.out.println("Congrats, your level has increased! Now you are stronger. ");
 				player.getExperience().increaseLevel();
-				player.getPlayerAtt().increaseAtt();
+				playerAttack.setAttackPoints(playerAttack.getAttackPoints()+3);  
 				player.recoverPlayer();
 				g.update();
 			}
@@ -251,7 +264,8 @@ public class GlobalGenerator {
 		Enemy_move_control.nextMove(enemyList, actionpt);
 
 		// ---- wait in between actions ---
-		long end = System.currentTimeMillis() + 300;
+		//long end = System.currentTimeMillis() + 300; // slower timer 
+		long end = System.currentTimeMillis() + 100;   // faster timer 
 		while (end > System.currentTimeMillis()) {
 			if (System.currentTimeMillis() > end) {
 				g.update();

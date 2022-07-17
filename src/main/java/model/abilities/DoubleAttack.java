@@ -24,7 +24,8 @@ public class DoubleAttack implements Ability{
      */
 	@Override
 	public void apply() {
-		playerAttack.setAttackPoints(playerAttack.getAttackPoints() * 2);
+		//playerAttack.setAttackPoints(playerAttack.getAttackPoints() * 2);
+		playerAttack.SetTemporaryAttack(playerAttack.getAttackPoints() * 2);
 	}
 
 }
