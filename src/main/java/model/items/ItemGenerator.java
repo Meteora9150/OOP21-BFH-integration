@@ -1,7 +1,9 @@
 package model.items;
 
 import java.util.Random;
-
+/**
+ * Handles the generation of the items after an Enemy dies
+ */
 public class ItemGenerator {
 	
 	public void spawn(boolean enemyType) {

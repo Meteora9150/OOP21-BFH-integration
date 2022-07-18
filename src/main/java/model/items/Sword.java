@@ -20,11 +20,13 @@ public class Sword implements EquippableItems {
 		
 		if(enemyType) {
 			// strong enemy sword 
-			this.Attack=rand.nextInt(4)+3+ ( gg.player.getExperience().getExpPoints() / 250 );
+			System.out.println("strong");
+			this.Attack=rand.nextInt(4)+3 + ( gg.player.getExperience().getExpPoints() / 250 );
 		}
 		else {
 			// simple enemy sword 
-			this.Attack=rand.nextInt(2)+1+ ( gg.player.getExperience().getExpPoints() / 120 );
+			System.out.println("simple");
+			this.Attack=rand.nextInt(2)+1 + ( gg.player.getExperience().getExpPoints() / 120 );
 		}
 		this.equipmentType=EquippableItems.Type.SWORD;
 		equip();

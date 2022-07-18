@@ -5,11 +5,18 @@ import model.items.EquippableItems;
  * Interface for the {@link Inventory}.
  */
 public interface Inventory {
-
+	/**
+	 * Adds an item to the inventory of the Player
+	 * @param item
+	 */
 	void add(EquippableItems item);
-	
+	/**
+	 * Removes all the items bonus in the inventory from the player stats
+	 */
 	void resetInventory();
-
+	/**
+	 * Generate a new empty inventory
+	 */
 	void generateNewInventory();
 	
 	/** 

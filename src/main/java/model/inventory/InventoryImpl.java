@@ -20,16 +20,21 @@ public class InventoryImpl implements Inventory{
 		if ( checkSize() ) {
 			inventory.add(item);
 		}else {
-			System.out.println(" your inventory is already full !!");
-			System.out.println(" Item lost: ( "+item.getType()+" ) ");
+			System.out.println(" your inventory is already full !! ");
+			System.out.println(" Item lost: ( "+ item.getType() +" ) ");
 		}
 	}
 
 	@Override
 	public void resetInventory() {
 		GlobalGenerator gg = GlobalGenerator.getInstance();
-		String s = getInventoryContents();		
-		System.out.println(" you are going to lose all these items "+ s +" ");
+		
+		if(getOccupation()!=0) {
+			String s = getInventoryContents();		
+			System.out.println(" you are going to lose all these items "+ s +" ");
+		}else {
+			System.out.println(" the curse takes nothing away from you ");
+		}
 		
 		for(EquippableItems item: inventory) {
 			if( item.getType() == EquippableItems.Type.SWORD) {

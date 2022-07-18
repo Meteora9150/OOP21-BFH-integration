@@ -361,7 +361,7 @@ public class GameLayoutController extends SharedMethodsImpl{
 		statsArea.setText("Experience = " + gg.player.getExperience().getExpPoints()+ "\n"+
 				  "Current HP = " + gg.player.getLife().getLifePoints() +" \n"+
 				  "Max HP = "+ gg.player.getLife().getMaxLifePoints() + "\n"+
-				  "Attack = "+gg.playerAttack.getAttackPoints()+" \n"+
+				  "Attack = "+gg.playerAttack.getAttackPoints()+" ( "+gg.playerAttack.GetTemporaryAttack() +" )\n"+
 				  "LV = " + gg.player.getExperience().getLevel() + "\n" +
 				  "Items equipped = "+gg.player.getInventory().getOccupation()+"\n"+
 				  "Inventory size = "+gg.player.getInventory().getSize()+"\n"+

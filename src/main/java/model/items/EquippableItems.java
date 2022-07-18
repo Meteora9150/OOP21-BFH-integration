@@ -10,7 +10,13 @@ public interface EquippableItems extends Items{
 		ACCESSORY;
 	}
 	
+	/**
+	 * @return The main statistic of the item
+	 */
 	int getInfo();
 
+	/**
+	 * @return The Type of the Equippable Item 
+	 */
 	public Type getType();
 }

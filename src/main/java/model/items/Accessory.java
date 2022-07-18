@@ -20,9 +20,11 @@ public class Accessory implements EquippableItems {
 		
 		if(enemyType) {
 			// strong enemy accessory
+			System.out.println("strong");
 			this.Hp=(rand.nextInt(5)+2 + ( gg.player.getExperience().getExpPoints() / 350 ) )*5;
 		}else {
 			// simple enemy accessory
+			System.out.println("simple");
 			this.Hp=(rand.nextInt(2)+1 + ( gg.player.getExperience().getExpPoints() / 200 ) )*5;
 		}		
 		this.equipmentType=EquippableItems.Type.ACCESSORY;

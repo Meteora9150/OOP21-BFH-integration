@@ -52,14 +52,6 @@ public class PlayerAttackImpl implements PlayerAttack {
 	public void setAttackPoints(int newAttackPoints) {
 		this.attackPoints = newAttackPoints;
 	}
-	
-	 /**
-     * {@inheritDoc}
-     */
-	 public void increaseAtt() {
-		 setAttackPoints(this.DEFAULT_ATTACK_POINTS+=3);
-		 
-	 }
 
 	 /**
 	 * {@inheritDoc}
@@ -68,15 +60,13 @@ public class PlayerAttackImpl implements PlayerAttack {
 		gg.player.getLife().setLifePoints(gg.player.getLife().getLifePoints() - enemyResponseHit);
 	}
 	
-	
-	
-	private int GetTemporaryAttack() {
+
+	public int GetTemporaryAttack() {
 		return this.temporaryAttack;
 	}
 	
-	public void SetTemporaryAttack(int i) {
-		// TODO Auto-generated method stub
-		this.temporaryAttack=i;
+	public void SetTemporaryAttack(int tempAttack) {
+		this.temporaryAttack = tempAttack;
 	}
 	
 }

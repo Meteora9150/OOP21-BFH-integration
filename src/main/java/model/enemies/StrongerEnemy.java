@@ -2,6 +2,11 @@ package model.enemies;
 
 public class StrongerEnemy extends Enemy {
 	
+	/**
+	 * Constructor for the StrongerEnemy. 
+	 * By using {@value #rand} we can generate different stats for the enemies.
+	 * @param id
+	 */
 	public StrongerEnemy(int id) {
 		super(id);
 		int value = rand.nextInt(7)+2; 

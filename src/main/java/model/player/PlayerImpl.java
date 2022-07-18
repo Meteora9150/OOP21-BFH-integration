@@ -36,7 +36,7 @@ public class PlayerImpl implements Player {
 		this.player_action=new ActionImpl();
 		this.gold=new Gold();
 		this.attack=new PlayerAttackImpl(gg.player);
-		this.inventory= new InventoryImpl();
+		this.inventory = new InventoryImpl();
 	}
 	
 	/**

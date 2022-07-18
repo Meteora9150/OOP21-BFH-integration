@@ -150,8 +150,7 @@ public class GlobalGenerator {
 					System.out.println("A strong enemy has appeared !! ");
 					Enemy e = new StrongerEnemy(i);	
 					enemies.add(e);
-				break;
-				
+				break;		
 				default:
 					Enemy e1 = new Enemy(i);
 					enemies.add(e1);

@@ -26,13 +26,15 @@ public interface PlayerAttack {
 	  * @param enemyResponseHit
 	  */
 	 void getHit(int enemyID, int enemyResponseHit);
-	 
+
 	 /**
-	 * add player attack points
-	 */
-	 void increaseAtt();
-
-
-
-	void SetTemporaryAttack(int i);
+	  * Set the next attack damage if double attack is used 
+	  * @param tempAttack
+	  */
+     void SetTemporaryAttack(int tempAttack);
+     
+     /**
+ 	 *  @return player's TemporaryAttackPoints.
+ 	 */
+     int GetTemporaryAttack();
 }
